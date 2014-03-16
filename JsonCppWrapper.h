@@ -32,7 +32,6 @@ public:
      */
     template<typename T>
     bool addNewObject(std::string key, T value, std::string rootObjectName = "");
-
     /**
      * @brief Removes an object from the loaded *.json file. Make sure to provide a root object name (e.g Student name) to remove
      * a sub object Otherwise it's removed from the file without any root object, use with caution. Make sure the json file is
