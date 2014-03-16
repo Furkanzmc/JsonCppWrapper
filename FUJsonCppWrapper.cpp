@@ -1,15 +1,15 @@
-#include "JsonCppWrapper.h"
+#include "FUJsonCppWrapper.h"
 
-JsonCppWrapper::JsonCppWrapper()
+FUJsonCppWrapper::FUJsonCppWrapper()
 {
 
 }
 
-JsonCppWrapper::~JsonCppWrapper()
+FUJsonCppWrapper::~FUJsonCppWrapper()
 {
 }
 
-void JsonCppWrapper::writeStyledJsonFile(Json::Value &jsonValueObject, std::string loadedFilePath)
+void FUJsonCppWrapper::writeStyledJsonFile(Json::Value &jsonValueObject, std::string loadedFilePath)
 {
     Json::StyledWriter writer;
     // Make a new JSON document for the configuration. Preserve original comments.
@@ -20,7 +20,7 @@ void JsonCppWrapper::writeStyledJsonFile(Json::Value &jsonValueObject, std::stri
     ostream.close();
 }
 
-bool JsonCppWrapper::doesObjectExist(std::string key, std::string rootObjectName)
+bool FUJsonCppWrapper::doesObjectExist(std::string key, std::string rootObjectName)
 {
     if (mLoadedJsonFilePath.size() < 1)
         return false;//No file is loaded
@@ -44,7 +44,7 @@ bool JsonCppWrapper::doesObjectExist(std::string key, std::string rootObjectName
     return exists;
 }
 
-void JsonCppWrapper::loadJsonFile(std::string filePath)
+void FUJsonCppWrapper::loadJsonFile(std::string filePath)
 {
     mLoadedJsonFilePath = "";
     Json::Reader reader;
@@ -61,7 +61,7 @@ void JsonCppWrapper::loadJsonFile(std::string filePath)
     }
 }
 
-bool JsonCppWrapper::removeObject(std::string key, std::string rootObjectName)
+bool FUJsonCppWrapper::removeObject(std::string key, std::string rootObjectName)
 {
     if (mLoadedJsonFilePath.size() < 1)
         return false;//No file is loaded
@@ -73,7 +73,7 @@ bool JsonCppWrapper::removeObject(std::string key, std::string rootObjectName)
     return true;
 }
 
-Json::Value JsonCppWrapper::getObject(std::string key, std::string rootObjectName)
+Json::Value FUJsonCppWrapper::getObject(std::string key, std::string rootObjectName)
 {
     Json::Value returnValue = Json::nullValue;
     if (rootObjectName.size() > 1) {
@@ -89,7 +89,7 @@ Json::Value JsonCppWrapper::getObject(std::string key, std::string rootObjectNam
     return returnValue;
 }
 
-Json::Value JsonCppWrapper::getObjectInValue(std::string key, Json::Value *objValue, std::string rootObjectName)
+Json::Value FUJsonCppWrapper::getObjectInValue(std::string key, Json::Value *objValue, std::string rootObjectName)
 {
     Json::Value returnValue = Json::nullValue;
     Json::Value &objectValue = *objValue;
@@ -106,7 +106,7 @@ Json::Value JsonCppWrapper::getObjectInValue(std::string key, Json::Value *objVa
     return returnValue;
 }
 
-Json::Value JsonCppWrapper::getObjectInArray(std::string arrayKey, std::string objectKey, std::string rootObjectName)
+Json::Value FUJsonCppWrapper::getObjectInArray(std::string arrayKey, std::string objectKey, std::string rootObjectName)
 {
     Json::Value returnValue = Json::nullValue;
     if (rootObjectName.size() > 1) {
@@ -130,7 +130,7 @@ Json::Value JsonCppWrapper::getObjectInArray(std::string arrayKey, std::string o
     return returnValue;
 }
 
-std::vector<Json::Value> JsonCppWrapper::getArray(std::string key, std::string rootObjectName)
+std::vector<Json::Value> FUJsonCppWrapper::getArray(std::string key, std::string rootObjectName)
 {
     std::vector<Json::Value> arrayValueVector;
     if (rootObjectName.size() > 1) {
