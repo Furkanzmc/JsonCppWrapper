@@ -5,6 +5,7 @@ A wrapper to provide a simpler interface to the libjsoncpp. It makes it easier t
 
 Example Usage
 ================
+<pre><code>
 int main()
 {
     FUJsonCppWrapper handler;
@@ -18,15 +19,13 @@ int main()
     handler.addNewArray("Array", vector);
     //You can add objects to array
     handler.addObjectToArray("Array", "Name", "Furkan");
-    std::vector<Json::Value> val = handler.getArray("Array");
-    for (Json::Value &value : val)
-        std::cout << value << std::endl;
-    std::cout << handler.getObjectInValue("Name", &handler.getArray("Array").at(2)) << std::endl;
+    //Use getArray function to get the array items and use them as you wish
     return 0;
 }
+</code></pre>
 
 Dependincies
 =================
-Obviously you need JsonCpp --> http://jsoncpp.sourceforge.net/
+<br>Obviously you need JsonCpp --> http://jsoncpp.sourceforge.net/</br>
 You can install the library through your Linux distro's package manager.
 If you're using Windows, just compile the code and add the library to the project you're using. Don't forget to set the appropriate include paths.
