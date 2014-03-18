@@ -113,6 +113,7 @@ public:
      * @return Json::Value if it does not exit Json::nullValue
      */
     Json::Value getObject(std::string key, std::string rootObjectName = "");
+
     /**
      * @brief Returns a Json::Value only containing the value for the key making it possible to convert the value between types.
      * If the objectValue does not equal to null, objectValue is used instead of mRootValue
@@ -122,6 +123,7 @@ public:
      * @return Json::Value if it does not exit Json::nullValue
      */
     Json::Value getObjectInValue(std::string key, Json::Value *objValue = nullptr, std::string rootObjectName = "");
+
     /**
      * @brief Returns an object inside an array.
      * @param arrayKey
