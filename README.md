@@ -5,7 +5,7 @@ A wrapper to provide a simpler interface to the libjsoncpp. It makes it easier t
 
 Example Usage
 ================
-<pre><code>
+```cpp
 int main()
 {
     FUJsonCppWrapper handler;
@@ -22,7 +22,7 @@ int main()
     //Use getArray function to get the array items and use them as you wish
     return 0;
 }
-</code></pre>
+```
 
 Dependincies
 =================
