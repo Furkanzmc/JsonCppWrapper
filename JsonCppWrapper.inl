@@ -1,5 +1,7 @@
+namespace zmc
+{
 template<typename T>
-bool FUJsonCppWrapper::addNewObject(std::string key, T value, std::string rootObjectName)
+bool JsonCppWrapper::addNewObject(std::string key, T value, std::string rootObjectName)
 {
     if (mLoadedJsonFilePath.size() < 1)
         return false;//No file is loaded
@@ -12,7 +14,7 @@ bool FUJsonCppWrapper::addNewObject(std::string key, T value, std::string rootOb
 }
 
 template<typename T>
-bool FUJsonCppWrapper::addNewArray(std::string key, std::vector<T> &items, std::string rootObjectName)
+bool JsonCppWrapper::addNewArray(std::string key, std::vector<T> &items, std::string rootObjectName)
 {
     if (mLoadedJsonFilePath.size() < 1)
         return false;//No file is loaded
@@ -28,7 +30,7 @@ bool FUJsonCppWrapper::addNewArray(std::string key, std::vector<T> &items, std::
 }
 
 template<typename T>
-bool FUJsonCppWrapper::removeObjectItemFromArray(std::string key, T value, std::string rootObjectName)
+bool JsonCppWrapper::removeObjectItemFromArray(std::string key, T value, std::string rootObjectName)
 {
     if (mLoadedJsonFilePath.size() < 1)
         return false;//No file is loaded
@@ -64,7 +66,7 @@ bool FUJsonCppWrapper::removeObjectItemFromArray(std::string key, T value, std::
 }
 
 template<typename T>
-bool FUJsonCppWrapper::removeItemFromArray(std::string key, T value, std::string rootObjectName)
+bool JsonCppWrapper::removeItemFromArray(std::string key, T value, std::string rootObjectName)
 {
     if (mLoadedJsonFilePath.size() < 1)
         return false;//No file is loaded
@@ -87,7 +89,7 @@ bool FUJsonCppWrapper::removeItemFromArray(std::string key, T value, std::string
 }
 
 template<typename T>
-bool FUJsonCppWrapper::addItemToArray(std::string key, T value, std::string rootObjectName)
+bool JsonCppWrapper::addItemToArray(std::string key, T value, std::string rootObjectName)
 {
     if (mLoadedJsonFilePath.size() < 1)
         return false;//No file is loaded
@@ -102,7 +104,7 @@ bool FUJsonCppWrapper::addItemToArray(std::string key, T value, std::string root
 }
 
 template<typename T>
-bool FUJsonCppWrapper::addObjectToArray(std::string key, std::vector<std::string> objectKeys, std::vector<T> values, std::string rootObjectName)
+bool JsonCppWrapper::addObjectToArray(std::string key, std::vector<std::string> objectKeys, std::vector<T> values, std::string rootObjectName)
 {
     if (mLoadedJsonFilePath.size() < 1)
         return false;//No file is loaded
@@ -121,7 +123,7 @@ bool FUJsonCppWrapper::addObjectToArray(std::string key, std::vector<std::string
 }
 
 template<typename T>
-bool FUJsonCppWrapper::addObjectToArray(std::string key, std::string objectKey, T value, std::string rootObjectName)
+bool JsonCppWrapper::addObjectToArray(std::string key, std::string objectKey, T value, std::string rootObjectName)
 {
     if (mLoadedJsonFilePath.size() < 1)
         return false;//No file is loaded
@@ -131,4 +133,5 @@ bool FUJsonCppWrapper::addObjectToArray(std::string key, std::string objectKey, 
     vectorValue.push_back(value);
     addObjectToArray(key, vectorKey, vectorValue, rootObjectName);
     return true;
+}
 }
