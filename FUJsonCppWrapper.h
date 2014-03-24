@@ -1,5 +1,5 @@
-#ifndef FUJSONCPPWRAPPER_H
-#define FUJSONCPPWRAPPER_H
+#ifndef JSONCPPWRAPPER_H
+#define JSONCPPWRAPPER_H
 #include <string>
 #include <vector>
 #include <map>
@@ -8,11 +8,13 @@
 #include <algorithm>
 #include <jsoncpp/json/json.h>
 
-class FUJsonCppWrapper
+namespace zmc
+{
+class JsonCppWrapper
 {
 public:
-    FUJsonCppWrapper();
-    ~FUJsonCppWrapper();
+    JsonCppWrapper();
+    ~JsonCppWrapper();
     bool doesObjectExist(std::string key, std::string rootObjectName = "");
     /**
      * @brief Loads a new *.json file to a Json::Value. Then all the functions use the same Json::Value object.
@@ -20,7 +22,10 @@ public:
      * @param filePath -> File path to the *.json file
      */
     void loadJsonFile(std::string filePath);
-    std::string &getLoadedJsonFilePath() {return mLoadedJsonFilePath;}
+    std::string &getLoadedJsonFilePath()
+    {
+        return mLoadedJsonFilePath;
+    }
 
     /**
      * @brief Adds a new object to the loaded *.json file. Make sure to provide a root object name (e.g Student name) to add it
@@ -136,7 +141,7 @@ public:
     /**
      * @brief Returns an std::vector<Json::Value>. The type those Json::Value have change depending on the elements of the array.
      * If the array has an object inside, an object will be returned then you can get key-value of that object using
-     * FUJsonCppWrapper::getItemInObject
+     * JsonCppWrapper::getItemInObject
      * @param key
      * @param rootObjectName
      * @return
@@ -150,5 +155,6 @@ private:
 private:
     void writeStyledJsonFile(Json::Value &jsonValueObject, std::string loadedFilePath);
 };
-#include "FUJsonCppWrapper.inl"//Includes the template function definitions
-#endif // FUJSONCPPWRAPPER_H
+}
+#include "JsonCppWrapper.inl"//Includes the template function definitions
+#endif // JSONCPPWRAPPER_H
