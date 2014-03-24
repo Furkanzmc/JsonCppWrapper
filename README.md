@@ -8,7 +8,7 @@ Example Usage
 ```cpp
 int main()
 {
-    FUJsonCppWrapper handler;
+    zmc::JsonCppWrapper handler;
     //Load the json file first. Calling this unloads the previous file and loads the new one
     handler.loadJsonFile("/home/furkan/Json.json");
     //Create a vector and add some items
