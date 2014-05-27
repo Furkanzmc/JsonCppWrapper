@@ -145,4 +145,16 @@ std::vector<Json::Value> JsonCppWrapper::getArray(std::string key, std::string r
     }
     return arrayValueVector;
 }
+
+
+std::vector<Json::Value> JsonCppWrapper::getArrayInValue(Json::Value *objValue)
+{
+    std::vector<Json::Value> arrayValueVector;
+    if (!objValue->isArray())
+        return arrayValueVector;
+    for (Json::Value value : *objValue) {
+        arrayValueVector.push_back(value);
+    }
+    return arrayValueVector;
+}
 }
