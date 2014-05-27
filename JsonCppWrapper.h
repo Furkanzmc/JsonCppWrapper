@@ -137,6 +137,14 @@ public:
      * @return Json::Value if it does not exit Json::nullValue
      */
     Json::Value getObjectInArray(std::string arrayKey, std::string objectKey, std::string rootObjectName = "");
+    
+    /**
+     * @brief Returns the value of the key in an array value
+     * @param objValue
+     * @param objectKey
+     * @return 
+     */
+    Json::Value getObjectInArrayValue(Json::Value *objValue, std::string objectKey);
 
     /**
      * @brief Returns an std::vector<Json::Value>. The type those Json::Value have change depending on the elements of the array.
@@ -147,6 +155,7 @@ public:
      * @return
      */
     std::vector<Json::Value> getArray(std::string key, std::string rootObjectName = "");
+    
     /**
      * @brief Returns the elements of the array in the given Json::Value. objValue must be an array object.
      * @param objValue
