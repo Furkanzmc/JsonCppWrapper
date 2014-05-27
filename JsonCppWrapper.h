@@ -147,6 +147,12 @@ public:
      * @return
      */
     std::vector<Json::Value> getArray(std::string key, std::string rootObjectName = "");
+    /**
+     * @brief Returns the elements of the array in the given Json::Value. objValue must be an array object.
+     * @param objValue
+     * @return
+     */
+    std::vector<Json::Value> getArrayInValue(Json::Value *objValue);
 
 private:
     Json::Value mRootValue;
