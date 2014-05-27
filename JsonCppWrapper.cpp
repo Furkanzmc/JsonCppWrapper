@@ -127,6 +127,22 @@ Json::Value JsonCppWrapper::getObjectInArray(std::string arrayKey, std::string o
     return returnValue;
 }
 
+Json::Value JsonCppWrapper::getObjectInArrayValue(Json::Value *objValue, std::string objectKey)
+{
+    if (objValue == nullptr || !objValue->isArray())
+        return Json::nullValue;
+    Json::Value returnValue = Json::nullValue;
+    if (!objValue->isArray())
+        return Json::nullValue;
+    for (Json::Value value : *objValue) {
+        if (value.isObject() && value[objectKey] != Json::nullValue) {
+            returnValue = value[objectKey];
+            break;
+        }
+    }
+    return returnValue;
+}
+
 std::vector<Json::Value> JsonCppWrapper::getArray(std::string key, std::string rootObjectName)
 {
     std::vector<Json::Value> arrayValueVector;
