@@ -113,6 +113,7 @@ Json::Value JsonCppWrapper::getObjectInArray(std::string arrayKey, std::string o
         for (Json::Value value : mRootValue[rootObjectName][arrayKey]) {
             if (value.isObject() && value[objectKey] != Json::nullValue) {
                 returnValue = value[objectKey];
+                break;
             }
         }
     } else {
@@ -121,6 +122,7 @@ Json::Value JsonCppWrapper::getObjectInArray(std::string arrayKey, std::string o
         for (Json::Value value : mRootValue[arrayKey]) {
             if (value.isObject() && value[objectKey] != Json::nullValue) {
                 returnValue = value[objectKey];
+                break;
             }
         }
     }
