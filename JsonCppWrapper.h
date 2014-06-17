@@ -6,7 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
-#include <jsoncpp/json/json.h>
+#include <json/json.h>
 
 namespace zmc
 {
@@ -21,7 +21,7 @@ public:
      * If you want to operate in different files, load them first! It does NOT create a new file if the file does not exist
      * @param filePath -> File path to the *.json file
      */
-    void loadJsonFile(std::string filePath);
+    bool loadJsonFile(std::string filePath);
     std::string &getLoadedJsonFilePath()
     {
         return mLoadedJsonFilePath;
@@ -137,12 +137,12 @@ public:
      * @return Json::Value if it does not exit Json::nullValue
      */
     Json::Value getObjectInArray(std::string arrayKey, std::string objectKey, std::string rootObjectName = "");
-    
+
     /**
      * @brief Returns the value of the key in an array value
      * @param objValue
      * @param objectKey
-     * @return 
+     * @return
      */
     Json::Value getObjectInArrayValue(Json::Value *objValue, std::string objectKey);
 

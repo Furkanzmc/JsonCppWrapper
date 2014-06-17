@@ -27,7 +27,7 @@ bool JsonCppWrapper::doesObjectExist(std::string key, std::string rootObjectName
         return false;//No file is loaded
     bool exists = false;
     Json::Value &rootValue = rootObjectName.size() > 1 ? mRootValue[rootObjectName][key]
-                             : mRootValue[key];
+                                                         : mRootValue[key];
     if (rootObjectName.size() < 1) {
         if (mRootValue[key] != Json::nullValue)
             exists = true;
@@ -44,7 +44,7 @@ bool JsonCppWrapper::doesObjectExist(std::string key, std::string rootObjectName
     return exists;
 }
 
-void JsonCppWrapper::loadJsonFile(std::string filePath)
+bool JsonCppWrapper::loadJsonFile(std::string filePath)
 {
     mLoadedJsonFilePath = "";
     Json::Reader reader;
@@ -54,11 +54,16 @@ void JsonCppWrapper::loadJsonFile(std::string filePath)
         bool parsingSuccessful = reader.parse(istream, mRootValue);
         if (!parsingSuccessful) {
             // report to the user the failure and their locations in the document.
-            std::cout  << "Failed to parse configuration\n" << reader.getFormatedErrorMessages() << std::endl;
-            return;
+            std::cout << "Failed to parse configuration\n" << reader.getFormatedErrorMessages() << std::endl;
+            return false;
         }
         mLoadedJsonFilePath = filePath;
     }
+    else if ((stream.rdstate() & std::ifstream::failbit) != 0) {
+        std::cerr << "Error opening " << filePath << std::endl;
+        return false;
+    }
+    return true;
 }
 
 bool JsonCppWrapper::removeObject(std::string key, std::string rootObjectName)
@@ -163,7 +168,6 @@ std::vector<Json::Value> JsonCppWrapper::getArray(std::string key, std::string r
     }
     return arrayValueVector;
 }
-
 
 std::vector<Json::Value> JsonCppWrapper::getArrayInValue(Json::Value *objValue)
 {
