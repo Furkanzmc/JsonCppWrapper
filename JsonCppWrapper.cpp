@@ -1,9 +1,9 @@
 #include "JsonCppWrapper.h"
 namespace zmc
 {
-JsonCppWrapper::JsonCppWrapper()
+JsonCppWrapper::JsonCppWrapper(std::string filePath)
 {
-
+    loadJsonFile(filePath);
 }
 
 JsonCppWrapper::~JsonCppWrapper()
