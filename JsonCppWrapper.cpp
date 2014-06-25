@@ -6,6 +6,10 @@ JsonCppWrapper::JsonCppWrapper(std::string filePath)
     loadJsonFile(filePath);
 }
 
+JsonCppWrapper::JsonCppWrapper()
+{
+}
+
 JsonCppWrapper::~JsonCppWrapper()
 {
 }
@@ -178,5 +182,15 @@ std::vector<Json::Value> JsonCppWrapper::getArrayInValue(Json::Value *objValue)
         arrayValueVector.push_back(value);
     }
     return arrayValueVector;
+}
+
+std::vector<std::string> JsonCppWrapper::getObjectNamesInKey(std::string key)
+{
+    return mRootValue[key].getMemberNames();
+}
+
+std::vector<std::string> JsonCppWrapper::getObjectNames()
+{
+    return mRootValue.getMemberNames();
 }
 }

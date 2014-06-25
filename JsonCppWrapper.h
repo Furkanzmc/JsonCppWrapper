@@ -14,6 +14,7 @@ class JsonCppWrapper
 {
 public:
     JsonCppWrapper(std::string filePath);
+    JsonCppWrapper();
     ~JsonCppWrapper();
     bool doesObjectExist(std::string key, std::string rootObjectName = "");
     /**
@@ -162,6 +163,19 @@ public:
      * @return
      */
     std::vector<Json::Value> getArrayInValue(Json::Value *objValue);
+
+    /**
+     * @brief Returns the member names in the given key
+     * @param key
+     * @return
+     */
+    std::vector<std::string> getObjectNamesInKey(std::string key);
+
+    /**
+     * @brief Returns the member names in the root
+     * @return
+     */
+    std::vector<std::string> getObjectNames();
 
 private:
     Json::Value mRootValue;
